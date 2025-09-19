@@ -1,12 +1,12 @@
 services:
-  # Backend (FastAPI)
+  # Backend (FastAPI - produção)
   backend:
-    build: ./backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.prod
     container_name: backend
     ports:
       - "8000:8000"
-    volumes:
-      - ./backend/app:/app/app # hot reload
     env_file:
       - .env
     depends_on:
@@ -15,16 +15,13 @@ services:
     networks:
       - app-network
 
-  # Frontend (React)
+  # Frontend (React - produção)
   frontend:
     build:
       context: ./frontend
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile.prod
     ports:
       - "3000:3000"
-    volumes:
-      - ./frontend:/app
-      - /app/node_modules
     stdin_open: true
     tty: true
     environment:
@@ -66,12 +63,10 @@ services:
     networks:
       - app-network
 
-# Volumes persistentes
 volumes:
   pgdata:
   minio_data:
 
-# Rede customizada
 networks:
   app-network:
     driver: bridge

@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
+import { fetchMinioTest } from "../api/minio";
 
-function App() {
+function MinioTest() {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:8000/minio/test")
-      .then((res) => res.json())
+    fetchMinioTest()
       .then((json) => {
         setData(json);
         setLoading(false);
@@ -19,14 +19,9 @@ function App() {
   }, []);
 
   return (
-    <div style={{ padding: "2rem", fontFamily: "Arial, sans-serif" }}>
-      <h1>Frontend rodando com Vite 🚀</h1>
-      <p>Agora você pode conectar com o backend FastAPI.</p>
-
-      <hr style={{ margin: "2rem 0" }} />
-
+    <section style={{ margin: "2rem 0" }}>
       <h2>Teste MinIO</h2>
-      {loading && <p>Carregando dados do MinIO...</p>}
+      {loading && <p>Carregando...</p>}
       {error && <p style={{ color: "red" }}>Erro: {error}</p>}
       {data && (
         <div>
@@ -39,8 +34,8 @@ function App() {
           </ul>
         </div>
       )}
-    </div>
+    </section>
   );
 }
 
-export default App;
+export default MinioTest;

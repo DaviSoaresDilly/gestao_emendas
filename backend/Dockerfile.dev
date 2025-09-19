@@ -2,12 +2,19 @@
 
 WORKDIR /app
 
+# Variáveis úteis
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1
+
+# Instalar utilitários básicos para debug
+RUN apt-get update && apt-get install -y curl nano && rm -rf /var/lib/apt/lists/*
+
 # Dependências
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+COPY requirements-dev.txt .
+RUN pip install --no-cache-dir -r requirements-dev.txt
 
 # Copiar código
 COPY ./app ./app
 
-# Hot reload
+# Hot reload com watchfiles
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]

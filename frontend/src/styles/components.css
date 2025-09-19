@@ -1,0 +1,26 @@
+/* Botões */
+button {
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: #0d6efd;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+button:hover {
+  background-color: #0b5ed7;
+}
+
+/* Inputs */
+input[type="file"] {
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+  border-radius: 5px;
+}
+
+p {
+  margin-top: 0.5rem;
+}
