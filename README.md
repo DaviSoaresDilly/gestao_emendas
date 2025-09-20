@@ -63,7 +63,7 @@ O objetivo é fornecer uma base moderna, escalável e segura para aplicações q
 
 Crie um arquivo `.env` na raiz do projeto com suas credenciais (veja também `.env.example`):
 
-```env
+```
 # Banco de dados
 DB_HOST=postgres
 DB_PORT=5432
