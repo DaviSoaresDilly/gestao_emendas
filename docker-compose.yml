@@ -21,7 +21,7 @@ services:
       context: ./frontend
       dockerfile: Dockerfile.prod
     ports:
-      - "3000:3000"
+      - "3000:80"
     stdin_open: true
     tty: true
     environment:

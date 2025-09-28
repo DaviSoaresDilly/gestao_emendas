@@ -153,38 +153,44 @@ MINIO_ROOT_PASSWORD=<sua_senha>
 ## 📂 Estrutura do Projeto
 
 ```
-├── app/                        # Código compartilhado (opcional)
-│   └── main.py
+
 ├── backend/
 │   ├── app/
-│   │   └── main.py             # Ponto de entrada da API
-│   ├── Dockerfile.dev          # Dockerfile para desenvolvimento
-│   ├── Dockerfile.prod         # Dockerfile para produção
-│   ├── requirements-dev.txt    # Dependências de desenvolvimento
-│   └── requirements-prod.txt   # Dependências de produção
+│   │   ├── routers/
+│   │   │   ├── minio.py            # Endpoints para MinIO
+│   │   │   └── municipalities.py   # Endpoints para municípios
+│   │   ├── crud.py                 # Lógica de acesso ao banco
+│   │   ├── database.py             # Configuração do banco de dados
+│   │   ├── main.py                 # Ponto de entrada do FastAPI
+│   │   ├── models.py               # Modelos do banco de dados
+│   │   └── schemas.py              # Validação de dados da API
+│   ├── Dockerfile.dev              # Dockerfile para desenvolvimento
+│   ├── Dockerfile.prod             # Dockerfile para produção
+│   ├── requirements-dev.txt        # Dependências de desenvolvimento
+│   └── requirements-prod.txt       # Dependências de produção
 ├── frontend/
 │   ├── src/
 │   │   ├── api/
-│   │   │   └── minio.js        # Integração com MinIO
+│   │   │   └── minio.js            # Integração com MinIO
 │   │   ├── components/
-│   │   │   ├── MinioTest.jsx   # Componente para testar conexão com MinIO
-│   │   │   └── MinioUpload.jsx # Componente para upload de arquivos ao MinIO
+│   │   │   ├── MinioTest.jsx       # Componente para testar conexão com MinIO
+│   │   │   └── MinioUpload.jsx     # Componente para upload de arquivos ao MinIO
 │   │   ├── styles/
-│   │   │   ├── components.css  # Estilos específicos de componentes
-│   │   │   └── global.css      # Estilos globais da aplicação
-│   │   ├── App.jsx             # Componente principal da aplicação
-│   │   ├── index.css           # Estilo base
-│   │   └── index.jsx           # Ponto de entrada do React
-│   ├── Dockerfile.dev          # Dockerfile para desenvolvimento do frontend
-│   ├── Dockerfile.prod         # Dockerfile para produção do frontend
-│   ├── index.html              # HTML principal do frontend
+│   │   │   ├── components.css      # Estilos específicos de componentes
+│   │   │   └── global.css          # Estilos globais da aplicação
+│   │   ├── App.jsx                 # Componente principal da aplicação
+│   │   ├── index.css               # Estilo base
+│   │   └── index.jsx               # Ponto de entrada do React
+│   ├── Dockerfile.dev              # Dockerfile para desenvolvimento do frontend
+│   ├── Dockerfile.prod             # Dockerfile para produção do frontend
+│   ├── index.html                  # HTML principal do frontend
 │   ├── package.json
 │   └── vite.config.js
-├── docker-compose.yml          # Orquestração dos containers
-├── .env                        # Variáveis de ambiente
-├── .env.example                # Exemplo de configuração
+├── docker-compose.yml              # Orquestração dos containers
+├── .env                            # Variáveis de ambiente
+├── .env.example                    # Exemplo de configuração
 ├── .gitignore
-├── run_dev.ps1                 # Script de desenvolvimento para Windows
+├── run_dev.ps1                     # Script de desenvolvimento para Windows
 └── README.md
 ```
 
