@@ -35,3 +35,31 @@ section {
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
+
+/* Estilos para a Tabela de Emendas */
+.emendas-list table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.emendas-list th,
+.emendas-list td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.emendas-list th {
+  background-color: #f4f6f8;
+  font-weight: bold;
+}
+
+.emendas-list tbody tr:nth-of-type(even) {
+  background-color: #f9f9f9;
+}
+
+.emendas-list tbody tr:hover {
+  background-color: #f1f1f1;
+}

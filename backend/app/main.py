@@ -6,7 +6,7 @@ import logging
 
 from .database import engine
 from . import models
-from .routers import municipalities, minio # <--- Importe o novo roteador minio
+from .routers import municipalities, minio, emendas, uploads
 
 # Esta linha é útil para criar as tabelas ao iniciar,
 # mas lembre-se que o Alembic é a ferramenta principal para gerenciar o banco.
@@ -22,10 +22,7 @@ app = FastAPI(
 )
 
 # Habilitar CORS
-origins = [
-    "http://localhost:3000",
-    "http://127.0.0.1:3000",
-]
+origins = ["*"]  # Permitir todas as origens para o desenvolvimento; ajuste conforme necessário para produção
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
@@ -38,6 +35,8 @@ app.add_middleware(
 # Cada conjunto de endpoints relacionados é incluído aqui.
 app.include_router(municipalities.router)
 app.include_router(minio.router)
+app.include_router(emendas.router)
+app.include_router(uploads.router)
 
 
 @app.get("/", tags=["Root"])

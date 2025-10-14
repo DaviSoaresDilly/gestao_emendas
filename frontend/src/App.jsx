@@ -1,21 +1,28 @@
+// frontend/src/App.jsx
 import React, { useState } from "react";
-import MinioTest from "./components/MinioTest";
-import MinioUpload from "./components/MinioUpload";
+import EmendasUpload from "./components/EmendasUpload";
+import EmendasList from "./components/pages/EmendasList";
 
 function App() {
   const [refreshKey, setRefreshKey] = useState(0);
 
+  // Esta função será chamada pelo EmendasUpload após o sucesso,
+  // para forçar a atualização da lista de emendas.
+  const handleSuccess = () => {
+    setRefreshKey((prevKey) => prevKey + 1);
+  };
+
   return (
     <main className="container">
       <header>
-        <h1>Frontend rodando com Vite 🚀</h1>
-        <p>Agora você pode conectar com o backend FastAPI.</p>
+        <h1>Gestão de Emendas Parlamentares 🚀</h1>
       </header>
 
-      <section>
-        <MinioUpload onUploadSuccess={() => setRefreshKey((k) => k + 1)} />
-        <MinioTest key={refreshKey} />
-      </section>
+      <EmendasUpload onUploadSuccess={handleSuccess} />
+
+      {/* A key={refreshKey} é um truque para forçar o React a recriar
+          o componente EmendasList, fazendo com que ele busque os novos dados. */}
+      <EmendasList key={refreshKey} />
     </main>
   );
 }
